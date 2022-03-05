@@ -17,7 +17,18 @@ defmodule Util.Date do
     {12, "Dec", "December"},
   ]
 
-  def month_name(month, opt \\ :short) when month in 1..12 do
+  def day_suffix(day) when day in 1..31 do
+    cond do
+      day in [1, 21, 31] -> "st"
+      day in [2, 22] -> "nd"
+      day in [3, 23] -> "rd"
+      true -> "th"
+    end
+  end
+  def day_suffix(day), do: raise "`#{day}` is not a valid day integer"
+
+  def month_name(month, opt \\ :short)
+  def month_name(month, opt) when month in 1..12 do
     with {_num, short, long} <- List.keyfind(@months, month, 0) do
       case opt do
         :short -> short
