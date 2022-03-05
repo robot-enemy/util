@@ -1,15 +1,3 @@
 %{
-  "codepagex": {:git, "https://github.com/stubgun/codepagex.git", "daff4882c3e096ba32d7c549a37922d3563c28d8", []},
-  "elixir_make": {:hex, :elixir_make, "0.6.2", "7dffacd77dec4c37b39af867cedaabb0b59f6a871f89722c25b28fcd4bd70530", [:mix], [], "hexpm", "03e49eadda22526a7e5279d53321d1cced6552f344ba4e03e619063de75348d9"},
-  "faker": {:hex, :faker, "0.16.0", "1e2cf3e8d60d44a30741fb98118fcac18b2020379c7e00d18f1a005841b2f647", [:mix], [], "hexpm", "fbcb9bf1299dff3c9dd7e50f41802bbc472ffbb84e7656394c8aa913ec315141"},
-  "fast_html": {:hex, :fast_html, "2.0.4", "4910ee49f2f6b19692e3bf30bf97f1b6b7dac489cd6b0f34cd0fe3042c56ba30", [:make, :mix], [{:elixir_make, "~> 0.4", [hex: :elixir_make, repo: "hexpm", optional: false]}, {:nimble_pool, "~> 0.1.0", [hex: :nimble_pool, repo: "hexpm", optional: false]}], "hexpm", "3bb49d541dfc02ad5e425904f53376d758c09f89e521afc7d2b174b3227761ea"},
-  "fast_sanitize": {:hex, :fast_sanitize, "0.2.2", "3cbbaebaea6043865dfb5b4ecb0f1af066ad410a51470e353714b10c42007b81", [:mix], [{:fast_html, "~> 2.0", [hex: :fast_html, repo: "hexpm", optional: false]}, {:plug, "~> 1.8", [hex: :plug, repo: "hexpm", optional: false]}], "hexpm", "69f204db9250afa94a0d559d9110139850f57de2b081719fbafa1e9a89e94466"},
-  "html_sanitize_ex": {:hex, :html_sanitize_ex, "1.4.1", "e8a67da405fe9f0d1be121a40a60f70811192033a5b8d00a95dddd807f5e053e", [:mix], [{:mochiweb, "~> 2.15", [hex: :mochiweb, repo: "hexpm", optional: false]}], "hexpm", "68d92656f47cd73598c45ad2394561f025c8c65d146001b955fd7b517858962a"},
-  "mime": {:hex, :mime, "1.5.0", "203ef35ef3389aae6d361918bf3f952fa17a09e8e43b5aa592b93eba05d0fb8d", [:mix], [], "hexpm", "55a94c0f552249fc1a3dd9cd2d3ab9de9d3c89b559c2bd01121f824834f24746"},
-  "mochiweb": {:hex, :mochiweb, "2.20.1", "e4dbd0ed716f076366ecf62ada5755a844e1d95c781e8c77df1d4114be868cdf", [:rebar3], [], "hexpm", "d1aeee7870470d2fa9eae0b3d5ab6c33801aa2d82b10e9dade885c5c921b36aa"},
-  "nimble_pool": {:hex, :nimble_pool, "0.1.0", "ffa9d5be27eee2b00b0c634eb649aa27f97b39186fec3c493716c2a33e784ec6", [:mix], [], "hexpm", "343a1eaa620ddcf3430a83f39f2af499fe2370390d4f785cd475b4df5acaf3f9"},
-  "plug": {:hex, :plug, "1.11.0", "f17217525597628298998bc3baed9f8ea1fa3f1160aa9871aee6df47a6e4d38e", [:mix], [{:mime, "~> 1.0", [hex: :mime, repo: "hexpm", optional: false]}, {:plug_crypto, "~> 1.1.1 or ~> 1.2", [hex: :plug_crypto, repo: "hexpm", optional: false]}, {:telemetry, "~> 0.4", [hex: :telemetry, repo: "hexpm", optional: false]}], "hexpm", "2d9c633f0499f9dc5c2fd069161af4e2e7756890b81adcbb2ceaa074e8308876"},
-  "plug_crypto": {:hex, :plug_crypto, "1.2.0", "1cb20793aa63a6c619dd18bb33d7a3aa94818e5fd39ad357051a67f26dfa2df6", [:mix], [], "hexpm", "a48b538ae8bf381ffac344520755f3007cc10bd8e90b240af98ea29b69683fc2"},
-  "slugger": {:hex, :slugger, "0.3.0", "efc667ab99eee19a48913ccf3d038b1fb9f165fa4fbf093be898b8099e61b6ed", [:mix], [], "hexpm"},
-  "telemetry": {:hex, :telemetry, "0.4.2", "2808c992455e08d6177322f14d3bdb6b625fbcfd233a73505870d8738a2f4599", [:rebar3], [], "hexpm", "2d1419bd9dda6a206d7b5852179511722e2b18812310d304620c7bd92a13fcef"},
+  "faker": {:hex, :faker, "0.17.0", "671019d0652f63aefd8723b72167ecdb284baf7d47ad3a82a15e9b8a6df5d1fa", [:mix], [], "hexpm", "a7d4ad84a93fd25c5f5303510753789fc2433ff241bf3b4144d3f6f291658a6a"},
 }
