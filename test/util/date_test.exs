@@ -47,6 +47,37 @@ defmodule Util.DateTest do
 
   end
 
+  describe "month_int/1" do
+
+    test "given a valid month name, returns the integer for the month" do
+      assert month_int("Jan") == 1
+      assert month_int("Feb") == 2
+      assert month_int("MAR") == 3
+      assert month_int("APR") == 4
+      assert month_int("May") == 5
+      assert month_int("Jun") == 6
+      assert month_int("jul") == 7
+      assert month_int("aug") == 8
+      assert month_int("Sep") == 9
+      assert month_int("Oct") == 10
+      assert month_int("Nov") == 11
+      assert month_int("Dec") == 12
+      assert month_int("January") == 1
+      assert month_int("February") == 2
+      assert month_int("March") == 3
+      assert month_int("April") == 4
+      assert month_int("MAY") == 5
+      assert month_int("JUNE") == 6
+      assert month_int("JULY") == 7
+      assert month_int("AUGUST") == 8
+      assert month_int("september") == 9
+      assert month_int("october") == 10
+      assert month_int("november") == 11
+      assert month_int("december") == 12
+    end
+
+  end
+
   describe "month_name/2" do
 
     test "given a valid month integer, returns the short month name" do
