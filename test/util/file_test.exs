@@ -26,14 +26,14 @@ defmodule Util.FileTest do
 
   describe "calculate_hash_of_file/1" do
 
-    test "returns the correct hash" do
+    test "should return the correct hash" do
       file_path = Path.join(File.cwd!(), "test/data/test-image.jpg")
 
       assert {:ok, hash} = calculate_hash_of_file(file_path)
       assert hash == "ab246229e1659b89e32dbad5077ffa66b610c8d8ef8fc5b48c7d3d5c9ec4629e"
     end
 
-    test "returns error tuple if files doesn't exist" do
+    test "should return an error tuple if the file doesn't exist" do
       assert {:error, :file_not_found} = calculate_hash_of_file("~/unknown.jpg")
     end
 
@@ -46,21 +46,21 @@ defmodule Util.FileTest do
       :delete_test_dir_after_test,
     ]
 
-    test "creates the requested directory", %{test_dir: test_dir} do
+    test "should create the requested directory", %{test_dir: test_dir} do
       directory_to_create = Path.join(test_dir, "make_this")
 
       assert {:ok, ^directory_to_create} = create_dir(directory_to_create)
       assert File.exists?(directory_to_create)
     end
 
-    test "creates a directory mutliple levels deep", %{test_dir: test_dir} do
+    test "should create a directory mutliple levels deep", %{test_dir: test_dir} do
       directory_to_create = Path.join([test_dir, "make", "many", "levels"])
 
       assert {:ok, ^directory_to_create} = create_dir(directory_to_create)
       assert File.exists?(directory_to_create)
     end
 
-    test "does not throw an error if the folder already exists", %{test_dir: test_dir} do
+    test "should not return error if the folder already exists", %{test_dir: test_dir} do
       directory_to_create = Path.join(test_dir, "make_this")
 
       assert {:ok, ^directory_to_create} = create_dir(directory_to_create)
@@ -68,7 +68,7 @@ defmodule Util.FileTest do
       assert {:ok, ^directory_to_create} = create_dir(directory_to_create)
     end
 
-    test "returns error if the directory can't be created", %{test_dir: test_dir} do
+    test "should return error if the directory can't be created", %{test_dir: test_dir} do
       assert {:ok, ^test_dir} = create_dir(test_dir)
 
       # Create file as part of the path, stopping the folder from being created
@@ -85,14 +85,14 @@ defmodule Util.FileTest do
 
   describe "get_file_size/1" do
 
-    test "returns the correct file size" do
+    test "should return the correct file size" do
       file_path = Path.join(File.cwd!(), "test/data/test-image.jpg")
 
       assert {:ok, size} = get_file_size(file_path)
       assert size == 117_786
     end
 
-    test "returns error if file doesn't exist" do
+    test "should return error if file doesn't exist" do
       assert {:error, :not_found} = get_file_size("unknown.file")
     end
   end
@@ -105,7 +105,7 @@ defmodule Util.FileTest do
       :delete_test_dir_after_test,
     ]
 
-    test "moves the file from the source location to the target location", %{test_dir: test_dir} do
+    test "should move file from source to target location", %{test_dir: test_dir} do
       source_path = Path.join(test_dir, "our-file.txt")
       target_path = Path.join(test_dir, "new-file.txt")
 
@@ -117,7 +117,7 @@ defmodule Util.FileTest do
       assert File.exists?(target_path)
     end
 
-    test "returns an error when the source path doesn't exist", %{test_dir: test_dir} do
+    test "should return error if the source path doesn't exist", %{test_dir: test_dir} do
       source_path = Path.join(test_dir, "our-file.txt")
       target_path = Path.join(test_dir, "new-file.txt")
 
@@ -126,7 +126,7 @@ defmodule Util.FileTest do
       assert {:error, :source_not_found} = move_file(source_path, target_path)
     end
 
-    test "returns an error if the target exists", %{test_dir: test_dir} do
+    test "should return error if the target exists", %{test_dir: test_dir} do
       source_path = Path.join(test_dir, "our-file.txt")
       target_path = Path.join(test_dir, "new-file.txt")
 
@@ -137,8 +137,7 @@ defmodule Util.FileTest do
       assert {:error, :target_already_exists} = move_file(source_path, target_path)
     end
 
-    test "if the target exists, but overwrite option is passed, overwrites the file",
-                                            %{test_dir: test_dir} do
+    test "should overwrite target if overwrite option is passed", %{test_dir: test_dir} do
       source_path = Path.join(test_dir, "our-file.txt")
       target_path = Path.join(test_dir, "new-file.txt")
 
@@ -150,6 +149,7 @@ defmodule Util.FileTest do
       refute File.exists?(source_path)
       assert File.exists?(target_path)
     end
+
   end
 
   describe "write_to_file/2" do
@@ -159,7 +159,7 @@ defmodule Util.FileTest do
       :delete_test_dir_after_test,
     ]
 
-    test "writes the given data to the given file locations", %{test_dir: test_dir} do
+    test "should write the data to the target location", %{test_dir: test_dir} do
       data     = "TEST"
       location = Path.join(test_dir, "test.txt")
 
@@ -167,7 +167,7 @@ defmodule Util.FileTest do
       assert File.exists?(saved_location)
     end
 
-    test "writes the file when target is inside a non-existing directory", %{test_dir: test_dir} do
+    test "should still write the file when target is inside a non-existing directory", %{test_dir: test_dir} do
       data = "TEST"
       sub_dirs = "many/sub/directories"
       location = Path.join([test_dir, sub_dirs, "test.txt"])
@@ -176,7 +176,7 @@ defmodule Util.FileTest do
       assert File.exists?(saved_location)
     end
 
-    test "returns an error if the file can't be written into the target location", %{test_dir: test_dir} do
+    test "should return error if the file can't be written into the target location", %{test_dir: test_dir} do
       data     = "TEST"
       sub_dir  = Path.join(test_dir, "sub-directory")
       location = Path.join(sub_dir, "test.txt")

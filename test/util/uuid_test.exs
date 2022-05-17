@@ -7,7 +7,7 @@ defmodule Util.UUIDTest do
 
   describe "generate_v4_uuid/0" do
 
-    test "generates valid v4 UUID" do
+    test "should generate a valid v4 UUID" do
       uuid_regex = ~r/[\da-f]{8}-([\da-f]{4}-){3}[\da-f]{12}/i
 
       for _ <- 1..5 do

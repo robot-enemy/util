@@ -10,17 +10,17 @@ defmodule Util.MapTest do
 
   describe "convert_atom_keys_to_strings/1" do
 
-    test "when given a map with atom keys, converts keys to strings" do
+    test "should convert keys to strings when given a map with atom keys" do
       params = %{test: 1, other: 2}
       assert %{"test" => 1, "other" => 2} = convert_atom_keys_to_strings(params)
     end
 
-    test "when given a map with mixed keys, only converts the atoms" do
+    test "should only convert atom keys when given a map with mixed keys" do
       params = %{"test" => 1, other: 2}
       assert %{"test" => 1, "other" => 2} = convert_atom_keys_to_strings(params)
     end
 
-    test "when given a map with lists, also converts the lists" do
+    test "should also convert lists when given a map with lists of maps" do
       params = %{test: [%{one: 1}, %{two: 2}]}
       assert %{"test" => [%{"one" => 1}, %{"two" => 2}]} = convert_atom_keys_to_strings(params)
     end
@@ -29,17 +29,17 @@ defmodule Util.MapTest do
 
   describe "convert_string_keys_to_atoms/1" do
 
-    test "when given a map with string keys, converts keys to atoms" do
+    test "should convert keys to atoms when given a map with string keys" do
       params = %{"test" => 1, "other" => 2}
       assert %{test: 1, other: 2} = convert_string_keys_to_atoms(params)
     end
 
-    test "When given a map with mixed keys, only converts the strings" do
+    test "should only convert string keys when given a map with mixed keys" do
       params = %{"test" => 1, other: 2}
       assert %{test: 1, other: 2} = convert_string_keys_to_atoms(params)
     end
 
-    test "when given a map with lists of maps, converts those as well" do
+    test "should also convert lists when given a map with lists of maps" do
       params = %{"test" => [%{"one" => 1, "two" => 2}]}
       assert %{test: [%{one: 1, two: 2}]} = convert_string_keys_to_atoms(params)
     end
@@ -48,14 +48,14 @@ defmodule Util.MapTest do
 
   describe "sort_map_array/3" do
 
-    test "does nothing when passed no keys" do
+    test "should do nothing when passed no keys" do
       data_map = %{
         publishers: [%{name: "Three"}, %{name: "One"}]
       }
       assert data_map == sort_map_array(data_map, [], [])
     end
 
-    test "sort the requested field by the key given" do
+    test "should sort the requested field by the key given" do
       data_map = %{
         publishers: [%{name: "Three"}, %{name: "One"}]
       }
@@ -64,7 +64,7 @@ defmodule Util.MapTest do
       assert sorted.publishers == [%{name: "One"}, %{name: "Three"}]
     end
 
-    test "sort multiple fields when given multiple keys" do
+    test "should sort multiple fields when given multiple keys" do
       data_map = %{
         bets: [%{num: "2"}, %{num: "3"}, %{num: "1"}],
         nums: [%{num: 2}, %{num: 3}, %{num: 1}]
@@ -75,7 +75,7 @@ defmodule Util.MapTest do
       assert sorted.nums == [%{num: 1}, %{num: 2}, %{num: 3}]
     end
 
-    test "ignores keys that don't exist" do
+    test "should ignores keys that don't exist" do
       data_map = %{
         publishers: [%{name: "Three"}, %{name: "One"}],
         series: [%{name: "Three"}, %{name: "One"}],
@@ -91,18 +91,18 @@ defmodule Util.MapTest do
 
   describe "sort_str_array/2" do
 
-    test "when given no keys, does nothing" do
+    test "should do nothing when given no keys" do
       data_map = %{publishers: ["Marvel", "DC"]}
       assert data_map == sort_str_array(data_map, [])
     end
 
-    test "will sort the list of the given key" do
+    test "should sort the list of a given key" do
       data_map = %{publishers: ["Marvel", "DC"]}
       assert sorted = sort_str_array(data_map, [:publishers])
       assert sorted.publishers == ["DC", "Marvel"]
     end
 
-    test "will sort the lists of multiple keys" do
+    test "should sort the lists of multiple keys" do
       data_map = %{
         publishers: ["Marvel", "DC"],
         series: ["Superman", "Batman", "Green Lantern"]
@@ -112,7 +112,7 @@ defmodule Util.MapTest do
       assert sorted.series == ["Batman", "Green Lantern", "Superman"]
     end
 
-    test "ignore keys that don't exist" do
+    test "should ignore keys that don't exist" do
       data_map = %{
         publishers: ["Marvel", "DC"],
         series: ["Superman", "Batman", "Green Lantern"]

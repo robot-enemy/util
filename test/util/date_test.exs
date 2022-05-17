@@ -6,7 +6,7 @@ defmodule Util.DateTest do
 
   describe "day_suffix/1" do
 
-    test "given a valid day integer, returns a day with suffix string" do
+    test "should return a suffix for a valid day integer" do
       assert day_suffix(1) == "st"
       assert day_suffix(2) == "nd"
       assert day_suffix(3) == "rd"
@@ -40,7 +40,7 @@ defmodule Util.DateTest do
       assert day_suffix(31) == "st"
     end
 
-    test "raises error if not a valid day number" do
+    test "should raise error if not a valid day number" do
       assert_raise RuntimeError, fn -> day_suffix(0) end
       assert_raise RuntimeError, fn -> day_suffix(32) end
     end
@@ -49,7 +49,7 @@ defmodule Util.DateTest do
 
   describe "month_int/1" do
 
-    test "given a valid month name, returns the integer for the month" do
+    test "should return an integer for a valid month name" do
       assert month_int("Jan") == 1
       assert month_int("Feb") == 2
       assert month_int("MAR") == 3
@@ -84,7 +84,7 @@ defmodule Util.DateTest do
 
   describe "month_name/2" do
 
-    test "given a valid month integer, returns the short month name" do
+    test "should return a valid month name for a valid month integer" do
       assert month_name(1) == "Jan"
       assert month_name(2) == "Feb"
       assert month_name(3) == "Mar"
@@ -112,7 +112,7 @@ defmodule Util.DateTest do
       assert month_name(12, :short) == "Dec"
     end
 
-    test "given a valid month integer, returns the long month name" do
+    test "should return the long month name for a valid month integer" do
       assert month_name(1, :long) == "January"
       assert month_name(2, :long) == "February"
       assert month_name(3, :long) == "March"
@@ -127,7 +127,7 @@ defmodule Util.DateTest do
       assert month_name(12, :long) == "December"
     end
 
-    test "raises error if the month is not valid" do
+    test "should raise error if the month is not valid" do
       assert_raise RuntimeError, fn -> month_name(0) end
       assert_raise RuntimeError, fn -> month_name(13) end
     end

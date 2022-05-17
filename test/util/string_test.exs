@@ -9,7 +9,7 @@ defmodule Util.StringTest do
 
   describe "move_definite_article_to_end_of_string/1" do
 
-    test "moves a definite article to the end of the string" do
+    test "should moves a definite article to the end of the string" do
       assert move_definite_article_to_end_of_string("The Lord of the Rings")
               == "Lord of the Rings, The"
 
@@ -20,19 +20,19 @@ defmodule Util.StringTest do
               == "American Tragedy, An"
     end
 
-    test "does not move first word if not a definite article" do
+    test "should not move first word if not a definite article" do
       for str <- ["Harry Potter", "Animal Farm", "Angels & Demons"] do
         assert move_definite_article_to_end_of_string(str) == str
       end
     end
 
-    test "does not change the string if the definite article is the only word" do
+    test "should not change the string if the definite article is the only word" do
       for str <- ["The", "A", "An"] do
         assert move_definite_article_to_end_of_string(str) == str
       end
     end
 
-    test "returns nil if the str is nil" do
+    test "should return nil if the str is nil" do
       assert move_definite_article_to_end_of_string(nil) |> is_nil()
     end
 
@@ -40,7 +40,7 @@ defmodule Util.StringTest do
 
   describe "smart_truncate/3" do
 
-    test "when passed nil, returns an empty Truncation struct" do
+    test "should return an empty Truncation struct when passed nil" do
       assert %Util.String.Truncation{
         char_length: 0,
         limit: 10,
@@ -50,7 +50,7 @@ defmodule Util.StringTest do
       } = smart_truncate(nil, 10, " > ")
     end
 
-    test "do not truncate when string is equal to the limit" do
+    test "should not truncate when string is equal to the limit" do
       ten_chars = "Abcdefghij"
       limit = 10
 
@@ -63,7 +63,7 @@ defmodule Util.StringTest do
       } = smart_truncate(ten_chars, limit)
     end
 
-    test "do not truncate when string is less than the limit" do
+    test "should not truncate when string is less than the limit" do
       ten_chars = "Abcdefghij"
       limit = 25
 
@@ -76,7 +76,7 @@ defmodule Util.StringTest do
       } = smart_truncate(ten_chars, limit)
     end
 
-    test "truncates when string is longer than limit" do
+    test "should truncate when string is longer than limit" do
       thirty_chars = "abc efgh ijklmn opqrs tuvw xyz"
       limit = 25
 

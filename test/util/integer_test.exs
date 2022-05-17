@@ -5,12 +5,12 @@ defmodule Util.IntegerTest do
 
   describe "convert_int_to_bool/1" do
 
-    test "when given 1, returns true" do
+    test "should return true when given 1" do
       assert convert_int_to_bool(1)
       assert convert_int_to_bool("1")
     end
 
-    test "when given 0, returns false" do
+    test "should return false when given 0" do
       refute convert_int_to_bool(0)
       refute convert_int_to_bool("0")
     end

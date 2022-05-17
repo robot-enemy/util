@@ -9,7 +9,7 @@ defmodule Util.RegexTest do
 
   describe "date_iso8601_regex/1" do
 
-    test "returns a working iso8601 date regex" do
+    test "should return a working iso8601 date regex" do
       assert %Regex{} = regex = date_iso8601_regex(:elixir)
 
       assert Regex.match?(regex, "2001-01-01")
@@ -20,7 +20,7 @@ defmodule Util.RegexTest do
       refute Regex.match?(regex, "21-01-01")
     end
 
-    test "returns a raw regex when passed :raw" do
+    test "should return a raw regex when passed :raw" do
       date_regex = date_iso8601_regex(:raw)
       assert date_regex |> is_binary()
       assert String.starts_with?(date_regex, "^(?:[1-9]")
@@ -29,7 +29,7 @@ defmodule Util.RegexTest do
 
   describe "uuid_v4_regex/0" do
 
-    test "returns a working UUID regex" do
+    test "should return a working UUID regex" do
       assert %Regex{} = regex = uuid_v4_regex()
 
       Enum.each(1..10, fn _ ->
