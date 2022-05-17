@@ -44,30 +44,28 @@ defmodule Util.Date do
 
       ## Examples
 
-      ?> month_int("Feb")
+      ?> month_str_to_int("Feb")
       2
 
-      ?> month_int("september")
+      ?> month_str_to_int("september")
       9
 
   """
-  def month_int(month_str) when is_binary(month_str) do
-    month_str = String.downcase(month_str)
-
-    cond do
-      String.starts_with?(month_str, "jan") -> 1
-      String.starts_with?(month_str, "feb") -> 2
-      String.starts_with?(month_str, "mar") -> 3
-      String.starts_with?(month_str, "apr") -> 4
-      String.starts_with?(month_str, "may") -> 5
-      String.starts_with?(month_str, "jun") -> 6
-      String.starts_with?(month_str, "jul") -> 7
-      String.starts_with?(month_str, "aug") -> 8
-      String.starts_with?(month_str, "sep") -> 9
-      String.starts_with?(month_str, "oct") -> 10
-      String.starts_with?(month_str, "nov") -> 11
-      String.starts_with?(month_str, "dec") -> 12
-      true -> nil
+  def month_str_to_int(month_str) when is_binary(month_str) do
+    case String.downcase(month_str) do
+      "jan" <> _ -> 1
+      "feb" <> _ -> 2
+      "mar" <> _ -> 3
+      "apr" <> _ -> 4
+      "may" <> _ -> 5
+      "jun" <> _ -> 6
+      "jul" <> _ -> 7
+      "aug" <> _ -> 8
+      "sep" <> _ -> 9
+      "oct" <> _ -> 10
+      "nov" <> _ -> 11
+      "dec" <> _ -> 12
+      _unknown   -> nil
     end
   end
 
