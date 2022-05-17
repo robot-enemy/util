@@ -17,6 +17,18 @@ defmodule Util.Date do
     {12, "Dec", "December"},
   ]
 
+  @doc """
+  Returns the day suffix for the given day integer.
+
+      ## Examples
+
+      ?> day_suffix(1)
+      "st"
+
+      ?> day_suffix(2)
+      "nd"
+
+  """
   def day_suffix(day) when day in 1..31 do
     cond do
       day in [1, 21, 31] -> "st"
@@ -27,6 +39,19 @@ defmodule Util.Date do
   end
   def day_suffix(day), do: raise "`#{day}` is not a valid day integer"
 
+
+  @doc """
+  Returns the month name for the given month integer.
+
+      ## Examples
+
+      ?> month_name(1)
+      "January"
+
+      ?> month_name(9, :short)
+      "Sep"
+
+  """
   def month_name(month, opt \\ :short)
   def month_name(month, opt) when month in 1..12 do
     with {_num, short, long} <- List.keyfind(@months, month, 0) do

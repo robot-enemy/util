@@ -2,6 +2,7 @@ defmodule Util.DateTest do
   @moduledoc false
   use ExUnit.Case
   import Util.Date
+  doctest Util.Date
 
   describe "day_suffix/1" do
 
