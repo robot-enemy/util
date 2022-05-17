@@ -76,6 +76,10 @@ defmodule Util.DateTest do
       assert month_int("december") == 12
     end
 
+    test "should return nil if month name not recognised" do
+      assert month_int("Dustuary") == nil
+    end
+
   end
 
   describe "month_name/2" do

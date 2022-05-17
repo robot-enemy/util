@@ -67,6 +67,7 @@ defmodule Util.Date do
       String.starts_with?(month_str, "oct") -> 10
       String.starts_with?(month_str, "nov") -> 11
       String.starts_with?(month_str, "dec") -> 12
+      true -> nil
     end
   end
 
