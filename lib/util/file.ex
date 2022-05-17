@@ -66,7 +66,6 @@ defmodule Util.File do
         case File.rename(source_path, target_path) do
           :ok               -> {:ok, target_path}
           {:error, :enoent} -> {:error, :source_not_found}
-          {:error, :eisdir} -> {:error, :target_is_directory}
         end
       else
         {:error, :target_already_exists}
